@@ -144,7 +144,7 @@ $selectedYoutuber = $youtubers[$selectedCode];
 			</div>
 
 			<aside>
-				<img src="assets/images/others-vdo.png">
+				
 
 				<ul class="video">	
 					<?php for ($youtube=0; $youtube<4; $youtube++): ?>
