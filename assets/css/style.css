@@ -18,7 +18,7 @@ body {
 
 
 .container{
-	max-width: 1024px;
+	width: 1024px;
 	margin: 0 auto;
 }
 
@@ -26,11 +26,15 @@ body {
 
 
 a{
-	display: flex;
+
 	text-decoration: none;
 }
 a:hover{
 	font-weight: bold;
+}
+
+#name {
+	height: 85px;
 }
 
 .title {
@@ -38,8 +42,8 @@ a:hover{
 	align-self: flex-end;
 	color: #FEE8E8;
 	text-shadow: 2px 0 0 #7D0011, 2px 2px 0 red, 0 2px 0 red, -2px 2px 0 #7D0011, -2px 0 0 #7D0011, -2px -2px 0 #7D0011, 0 -2px 0 #7D0011, 2px -2px 0 #7D0010;
-	padding: 0 0 0 120px;
 	z-index: 50;
+	position: relative;
 
 }
 
@@ -55,9 +59,8 @@ a:hover{
 .links-container {
 	display: flex;	
 	list-style-type: none;
-	padding: 30px;
-	justify-content: flex-end;
-	padding: 110px 50px 30px 0;
+	justify-content: space-between;
+	padding: 80px 0px 30px 0;
 
 
 }
@@ -67,7 +70,7 @@ a:hover{
 }
 
 .links-container img {
-	height: 150px;
+	height: 120px;
 	position: absolute;
 	right: 0;
 	bottom:0;
@@ -81,10 +84,19 @@ a:hover{
 }
 
 .video{
-	display: flex;	
-	justify-content: space-evenly;
+	display: flex;
 	list-style-type: none;
-	padding: 100px 0px 50px 0px;
+	margin-top: 50px;
+	padding:0;
+}
+.video li {
+	flex: 1;
+}
+.video li a{
+	display: block;
+}
+.video li a img {
+	width: 100%;
 }
 .videocontainer{
 	width: 100%;
@@ -109,8 +121,8 @@ a:hover{
 }
 
 .other-youtubers{
-	display: flex;
-	align-self: flex-start;
+	width: 80%;
+	justify-content: center;
 }
 .perso{
 	display: flex;	
