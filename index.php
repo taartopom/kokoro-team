@@ -50,7 +50,7 @@ $selectedYoutuber = $youtubers[$selectedCode];
 						<?php for ($youtube=0; $youtube<4; $youtube++): ?>
 							<li>
 								<a href="https://www.youtube.com/embed/<?=$selectedYoutuber['youtube']->items[$youtube]->id->videoId ?>">
-									<img src="<?= $selectedYoutuber['youtube']->items[$youtube]->snippet->thumbnails->high->url ?>">
+									<img src="<?= $selectedYoutuber['youtube']->items[$youtube]->snippet->thumbnails->medium->url ?>">
 								</a>
 							</li>
 						<?php endfor; ?>
