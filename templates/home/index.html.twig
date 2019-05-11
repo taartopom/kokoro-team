@@ -1,7 +1,83 @@
-{% extends 'base.html.twig' %}
+<!DOCTYPE html>
+<html>
+	
+	<head>
+		<meta charset="utf-8" >
+		<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style.css') }}">
 
-{% block title %}{% endblock %}
+		<title>kokoro team - {{ selectedYoutuber['name'] }}></title>
+	</head>
 
-{% block body %}
+	<body class="youtuber-{{ selectedCode }}">
+		<header style="background-image:url({{ selectedYoutuber['background'] }});">
+			<div class="container">
+				<div class="en-tete">
+					<img src="{{ asset('assets/images/logo-kokoroteam.png') }}" alt="Logo" class="Img-logo" />
+					<img src="{{ asset('assets/images/' ~ selectedCode ~ '/' ~ selectedYoutuber['logo']) }}" alt="logo {{ selectedYoutuber['name'] }}" id="name">
+				</div>
+				<nav>
+					<ul class="links-container">
+						{% for link in selectedYoutuber['links'] %}
+							<li>
+								<a href="{{ link['link'] }}" target="_blank">
+									<span class="title">
+										{{ link['title'] }}
+									</span>
+									<img src="assets/images/{{ link['img'] }}" alt="{{ link['title'] }}">
+								</a>
+							</li>
+						{% endfor %}
+					</ul>
+				</nav>
+			</div>
+		</header>
+	
+		<section class="videos">
+			<div class="container">
 
-{% endblock %}
+				<div class="videocontainer">
+					<iframe id="youtube" src="https://www.youtube.com/embed/{{ selectedYoutuber['youtube'].items[0].id.videoId }}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen ></iframe>
+				</div>
+				<aside>
+					<ul class="video">
+						{% for youtube in 0..3 %}
+							<li>
+								<a href="https://www.youtube.com/embed/{{ selectedYoutuber['youtube'].items[youtube].id.videoId }}">
+									<img src="{{ selectedYoutuber['youtube'].items[youtube].snippet.thumbnails.medium.url }}">
+								</a>
+							</li>
+						{% endfor %}
+					</ul>
+				</aside>
+			</div>
+		</section>
+
+		<footer>
+			<div style="background-image:url({{ selectedYoutuber['background'] }});">
+				<div id="contenu" class="container">
+					<img src="{{ asset('assets/images/other-youtubers.png') }}" class="other-youtubers">
+					<ul class="perso"> 
+						{% for code, youtuber in youtubers %}
+							{% if code != selectedCode %}
+								<li>
+									<a href="{{ path('home', {selectedCode: code}) }}">
+										<div class="grid">
+						                    <figure class="effect-lexi">
+						                       <img src="{{ asset(youtuber['picture']) }}" alt="{{ youtuber['name']}}">
+						                        <figcaption>
+						                            <p>{{ youtuber['name'] }}</p>
+						                        </figcaption>            
+						                    </figure>
+						                </div>
+									</a>
+								</li>
+							{% endif %}
+						{% endfor %}
+					</ul>
+				</div>
+			</div>
+		</footer>
+		<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+		<script type="text/javascript" src="{{ asset('assets/js/script.js') }}"></script>
+	</body>
+</html>

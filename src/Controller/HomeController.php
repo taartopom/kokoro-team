@@ -10,18 +10,22 @@ use App\Data\Youtubers;
 class HomeController extends AbstractController
 {
     /**
-     * @Route("/{youtuberName}", name="home")
+     * @Route("/{selectedCode}", name="home")
      */
-    public function index($youtuberName='jdmp')
+    public function index($selectedCode='jdmp')
     {
     	$youtubers= Youtubers::getData();
-    	dump($youtubers);
-    	if (!array_key_exists($youtuberName, $youtubers)) {
+
+    	if (!array_key_exists($selectedCode, $youtubers)) {
     		throw $this->createNotFoundException('Youtubeur inconnu');
     	}
-    	$youtuber= $youtubers[$youtuberName];
-    	dump($youtuber);exit;
-        return $this->render('home/index.html.twig');
+    	$selectedYoutuber= $youtubers[$selectedCode];
+
+        return $this->render('home/index.html.twig', [
+        	'selectedYoutuber'=>$selectedYoutuber,
+        	'selectedCode'=>$selectedCode,
+        	'youtubers'=>$youtubers
+        ]);
     }
 
 }
